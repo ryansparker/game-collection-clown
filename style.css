@@ -23,11 +23,43 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  cursor: url(malletmini.png), auto;
+  /* cursor: url(hammer.svg), auto; */
   display: flex;
   flex-direction: row;
  
 }
+
+
+#timer {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--color-lime);
+  font-size: 50px;
+}
+
+.cursor {
+  background-image: url(hammer.svg);
+  width: 103px;
+  height: 103px;
+  position: absolute;
+  transform: translate(-30%, -70%);
+  pointer-events: none;
+  transition: all .05s ease;
+  transition-property: background, transform;
+  z-index: 3;
+  }
+
+.link-grow {
+  transform: rotate(45deg);
+
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid pink;
+  width: 100%;
+}
+
 
 .container {
   display:flex;
@@ -38,6 +70,7 @@ body {
   cursor: auto; 
   height: 100vh;
   padding: 50px 30px 50px 30px;
+  z-index: 4;
 }
 
 
@@ -128,6 +161,16 @@ button:hover{
   height: 100%;
   transition:all 0.4s;
 }
+
+.bonked {
+  background: url('clown-bonked.svg') bottom center no-repeat;
+  background-size: 60%;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+}
+
 
 .hole.up .clown {
   top: 0;

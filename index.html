@@ -5,18 +5,22 @@
   <meta charset="UTF-8">
   <title>Whack A Clown!</title>
   <link href="https://fonts.googleapis.com/css2?family=Solway:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="/favicon.ico" />
-
+  <link rel="icon" href="favicon.ico" />
+  <title>Whack-a-Clown</title>
 </head>
 
 <body>
-  
+  <div class="cursor"></div>
+
   <div class="container">
     
     <div class="container-title">
       <h1>Whack<br>-a-<br>Clown</h1>
     </div>
+
+    <div id="timer">:15</div>
     
     
     
@@ -25,12 +29,13 @@
     </div>
     
     <div class="container-btn">
-      <button onClick="startGame()">Start!</button>
+      <button onClick="startGame(), timing()">Start!</button>
     </div>
   
   </div>
+  
 
-
+  
   <div class="game">
     <div class="hole hole1">
       <div class="clown"></div>
@@ -52,66 +57,7 @@
     </div>
   </div>
 
-  
-  <script>
-
-    const holes = document.querySelectorAll('.hole');
-    const scoreBoard = document.querySelector('.score');
-    const clowns = document.querySelectorAll('.clown');
-    let lastHole;
-    let timeUp = false;
-    let score = 0;
-
-    function randomTime(min, max) {
-      return Math.round(Math.random() * (max - min) + min);
-    }
-
-    function randomHole(holes) {
-      const idx = Math.floor(Math.random() * holes.length);
-      const hole = holes[idx];
-      if (hole === lastHole) {
-        console.log('Ah nah thats the same one bud');
-        return randomHole(holes);
-      }
-      lastHole = hole;
-      return hole;
-    }
-
-    function peep() {
-      const time = randomTime(500, 2000);
-      const hole = randomHole(holes);
-      hole.classList.add('up')
-      setTimeout(() => {
-        hole.classList.remove('up')
-        if (!timeUp) peep()
-
-      }, time)
-    }
-
-    function startGame() {
-      score.textContent = 0
-      timeUp = false;
-      score = 0
-      peep();
-      setTimeout(() => timeUp = true, 10000)
-    }
-
-
-    function bonk(e) {
-      console.log(e)
-      if (!e.isTrusted) return; // cheater!
-      score++;
-      this.classList.remove('up');
-      scoreBoard.textContent = score;
-    }
-
-clowns.forEach(clown => clown.addEventListener('click', bonk))
-  //save high scores in local storage
-  //expert level
-  //countdown clock
-  // cursor into image https://medium.com/@amieeverett/how-to-make-your-cursor-into-an-image-using-javascript-83e2efeca0ef
-
-  </script>
+  <script src="index.js"></script>
 </body>
 
 </html>
